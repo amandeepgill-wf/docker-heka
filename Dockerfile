@@ -29,21 +29,25 @@ ENV GOPATH /go
 ENV GOROOT /usr/local/go
 
 # install heka
-RUN mkdir -p /go/src/github.com/mozilla-services/heka
-RUN git clone https://github.com/mozilla-services/heka /go/src/github.com/mozilla-services/heka
-RUN cd /go/src/github.com/mozilla-services/heka && ./build.sh
+RUN mkdir -p /go/src/github.com/mozilla-services/heka && \
+    git clone https://github.com/mozilla-services/heka \ 
+        /go/src/github.com/mozilla-services/heka && \
+    cd /go/src/github.com/mozilla-services/heka && \
+    ./build.sh
 
-RUN go get code.google.com/p/go-uuid/uuid
-RUN go get code.google.com/p/gomock/mockgen
-RUN go get code.google.com/p/goprotobuf/protoc-gen-go
-RUN go get github.com/bbangert/toml
-RUN go get github.com/crankycoder/xmlpath
-RUN go get github.com/rafrombrc/go-notify
-RUN go get github.com/rafrombrc/whisper-go/whisper
-RUN go get github.com/streadway/amqp
+# install packages to build
+RUN go get code.google.com/p/go-uuid/uuid \
+            code.google.com/p/gomock/mockgen \
+            code.google.com/p/goprotobuf/protoc-gen-go \
+            github.com/bbangert/toml \
+            github.com/crankycoder/xmlpath \
+            github.com/rafrombrc/go-notify \
+            github.com/rafrombrc/whisper-go/whisper \
+            github.com/streadway/amqp
 
-RUN cd /go/src/github.com/mozilla-services/heka/build && make deb
-RUN dpkg -i /go/src/github.com/mozilla-services/heka/build/heka_*.deb
+RUN cd /go/src/github.com/mozilla-services/heka/build && \ 
+    make deb && \
+    dpkg -i /go/src/github.com/mozilla-services/heka/build/heka_*.deb
 
 # add config file
 ADD ./hekad.toml /etc/hekad.toml
