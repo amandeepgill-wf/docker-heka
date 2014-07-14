@@ -51,8 +51,6 @@ ADD ./hekad.toml /etc/hekad.toml
 
 # expose ports
 EXPOSE 8128/udp
-EXPOSE 2008
-
 
 # run heka
 ENTRYPOINT ["hekad"]
