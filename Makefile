@@ -13,7 +13,10 @@ run:
 debug:
 	docker run -i -p 8128:8128/udp your-docker-hub-of-choice/your-username/heka:latest
 
-commit:
+pull:
+	docker pull your-docker-hub-of-choice/your-username/heka:latest
+
+push:
 	docker push your-docker-hub-of-choice/your-username/heka:latest
 
 clean:
