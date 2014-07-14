@@ -25,7 +25,6 @@ RUN mkdir /go
 
 # path stuff
 ENV PATH $PATH:/usr/local/go/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/go/bin
-RUN export PATH=$PATH:/usr/local/go/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/go/bin
 ENV GOPATH /go
 ENV GOROOT /usr/local/go
 
@@ -34,9 +33,9 @@ RUN mkdir -p /go/src/github.com/mozilla-services/heka
 RUN git clone https://github.com/mozilla-services/heka /go/src/github.com/mozilla-services/heka
 RUN cd /go/src/github.com/mozilla-services/heka && ./build.sh
 
+RUN go get code.google.com/p/go-uuid/uuid
 RUN go get code.google.com/p/gomock/mockgen
 RUN go get code.google.com/p/goprotobuf/protoc-gen-go
-RUN go get code.google.com/p/go-uuid/uuid
 RUN go get github.com/bbangert/toml
 RUN go get github.com/crankycoder/xmlpath
 RUN go get github.com/rafrombrc/go-notify
