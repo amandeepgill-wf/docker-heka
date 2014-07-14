@@ -8,10 +8,10 @@ build:
 	docker build -t your-docker-hub-of-choice/your-username/heka:latest .
 
 run:
-	docker run -p 2008:2008 -p 8128:8128/udp your-docker-hub-of-choice/your-username/heka:latest
+	docker run -p 8128:8128/udp your-docker-hub-of-choice/your-username/heka:latest
 
 debug:
-	docker run -i -p 2008:2008 -p 8128:8128/udp your-docker-hub-of-choice/your-username/heka:latest
+	docker run -i -p 8128:8128/udp your-docker-hub-of-choice/your-username/heka:latest
 
 commit:
 	docker push your-docker-hub-of-choice/your-username/heka:latest
