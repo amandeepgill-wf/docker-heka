@@ -21,3 +21,5 @@ push:
 
 clean:
 	docker ps -a | grep 'Exited' | awk '{ print $$1 }' | xargs docker rm
+
+-include Makefile_local
