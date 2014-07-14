@@ -9,7 +9,10 @@
 
 Modify the Makefile to replace the existing tag **'your-docker-hub-of-choice/your-username/heka:latest'** with tag of your choosing.  If not planning to commit the built container to a hub, you can replace the entire tag with something simple like **'heka'**.  Otherwise, replace **'your-docker-hub-of-choice'** and **'your-username'**.
 
-### Use:
+### Heka Instance Use:
+Send UDP communications to this instance on port 8128.
+
+### Container Use:
 ###### TO BUILD THE CONTAINER:
 `make build`
 
