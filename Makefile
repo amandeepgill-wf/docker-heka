@@ -19,6 +19,9 @@ pull:
 push:
 	docker push your-docker-hub-of-choice/your-username/heka:latest
 
+login:
+	docker login -u your-username -p your-hub-password -e your-email your-docker-hub-of-choice
+
 clean:
 	docker ps -a | grep 'Exited' | awk '{ print $$1 }' | xargs docker rm
 
